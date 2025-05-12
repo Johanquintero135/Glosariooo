@@ -1,41 +1,744 @@
-<!-- Sección A -->
-<div id="A" class="seccion">
-    <h2>A</h2>
-    <div class="termino">
-        <div class="palabra">API</div>
-        <div class="definicion">Manera en que dos programas diferentes se comunican entre sí.</div>
-    </div>
-    <div class="termino">
-        <div class="palabra">Algoritmo</div>
-        <div class="definicion">Pasos que sigues para resolver un problema.</div>
-    </div>
-    <div class="termino">
-        <div class="palabra">ADSO</div>
-        <div class="definicion">Carrera técnica enfocada en crear programas y sistemas informáticos útiles para empresas y personas.</div>
-    </div>
-    <div class="termino">
-        <div class="palabra">Análisis</div>
-        <div class="definicion">Proceso de entender un problema para saber qué necesita el usuario antes de programar.</div>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Glosario técnico para estudiantes de Análisis y Desarrollo de Sistemas de Información (ADSO)">
+    <title>Glosario Técnico ADSO</title>
+    
+    <!-- Estilos para el glosario -->
+    <style>
+        :root {
+            --color-primary: #2e7d32;
+            --color-primary-hover: #1b5e20;
+            --color-secondary: #333;
+            --color-secondary-hover: #555;
+            --color-background: #f9f9f9;
+            --color-text: #333;
+            --color-term: #2e7d32;
+            --font-family: 'Segoe UI', Arial, sans-serif;
+            --box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
 
-<!-- Sección B -->
-<div id="B" class="seccion">
-    <h2>B</h2>
-    <div class="termino">
-        <div class="palabra">Base de datos</div>
-        <div class="definicion">Lugar digital donde se guarda información organizada.</div>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-background);
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            width: 100%;
+            padding: 20px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: var(--color-secondary);
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            color: var(--color-secondary);
+            margin: 20px 0 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--color-primary);
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .alphabet-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px 0;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: var(--border-radius);
+        }
+        
+        .alphabet-nav a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            font-weight: bold;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .alphabet-nav a:hover, 
+        .alphabet-nav a:focus {
+            background-color: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .alphabet-nav a:active {
+            transform: translateY(0);
+        }
+
+        .alphabet-nav a.active {
+            background-color: var(--color-secondary);
+        }
+        
+        .glossary-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            margin-bottom: 30px;
+        }
+
+        .glossary-section.visible {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .term-container {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--color-primary);
+            background-color: #f9f9f9;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            transition: var(--transition);
+        }
+        
+        .term-container:hover {
+            transform: translateX(5px);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .term {
+            font-weight: bold;
+            color: var(--color-term);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .definition {
+            margin-left: 10px;
+            font-size: 1rem;
+        }
+        
+        .pagination {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .pagination a {
+            display: inline-block;
+            background-color: var(--color-secondary);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .pagination a:hover {
+            background-color: var(--color-secondary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .pagination a:active {
+            transform: translateY(0);
+        }
+        
+        .search-container {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+        }
+        
+        #search-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+        
+        #search-button {
+            padding: 10px 15px;
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        #search-button:hover {
+            background-color: var(--color-primary-hover);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--color-primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            display: none;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            z-index: 100;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--color-primary-hover);
+            transform: translateY(-3px);
+        }
+        
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+            border-radius: var(--border-radius);
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .alphabet-nav a {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+            
+            .term {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .alphabet-nav {
+                gap: 5px;
+            }
+            
+            .alphabet-nav a {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+            
+            .term-container {
+                padding: 10px;
+            }
+        }
+
+        /* Modo oscuro */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-primary: #4caf50;
+                --color-primary-hover: #66bb6a;
+                --color-background: #121212;
+                --color-text: #e0e0e0;
+                --color-term: #81c784;
+            }
+            
+            body {
+                background-color: var(--color-background);
+            }
+            
+            .container {
+                background-color: #1e1e1e;
+            }
+            
+            .alphabet-nav {
+                background-color: #2a2a2a;
+            }
+            
+            .term-container {
+                background-color: #2a2a2a;
+            }
+            
+            #search-input {
+                background-color: #333;
+                color: #e0e0e0;
+                border-color: #555;
+            }
+            
+            .no-results {
+                background-color: #332d00;
+                border-left-color: #856404;
+                color: #e0e0e0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Encabezado -->
+        <header>
+            <h1>Glosario Técnico ADSO</h1>
+            <p class="subtitle">Términos esenciales para Análisis y Desarrollo de Sistemas de Información</p>
+        </header>
+        
+        <!-- Barra de búsqueda -->
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Buscar término..." aria-label="Buscar término">
+            <button id="search-button" aria-label="Buscar">Buscar</button>
+        </div>
+        
+        <!-- Navegación alfabética -->
+        <nav class="alphabet-nav" aria-label="Navegación alfabética">
+            <a href="#" data-letter="A" aria-label="Términos con A">A</a>
+            <a href="#" data-letter="B" aria-label="Términos con B">B</a>
+            <a href="#" data-letter="C" aria-label="Términos con C">C</a>
+            <a href="#" data-letter="D" aria-label="Términos con D">D</a>
+            <a href="#" data-letter="E" aria-label="Términos con E">E</a>
+            <a href="#" data-letter="F" aria-label="Términos con F">F</a>
+            <a href="#" data-letter="G" aria-label="Términos con G">G</a>
+            <a href="#" data-letter="H" aria-label="Términos con H">H</a>
+            <a href="#" data-letter="I" aria-label="Términos con I">I</a>
+            <a href="#" data-letter="J" aria-label="Términos con J">J</a>
+            <a href="#" data-letter="K" aria-label="Términos con K">K</a>
+            <a href="#" data-letter="L" aria-label="Términos con L">L</a>
+            <a href="#" data-letter="M" aria-label="Términos con M">M</a>
+        </nav>
+        
+        <!-- Mensaje de sin resultados para la búsqueda -->
+        <div class="no-results" id="no-results">
+            No se encontraron términos que coincidan con tu búsqueda. Intenta con otra palabra.
+        </div>
+        
+        <!-- Secciones del glosario -->
+        <main id="glossary-content">
+            <section id="A" class="glossary-section" aria-labelledby="heading-A">
+                <h2 id="heading-A">A</h2>
+                <div class="term-container">
+                    <div class="term">API</div>
+                    <div class="definition">Manera de que dos programas diferentes hablen entre sí.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Algoritmo</div>
+                    <div class="definition">Pasos que sigues para resolver un problema.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">ADSO</div>
+                    <div class="definition">Esta es la carrera que enseña a crear programas y sistemas informáticos útiles para empresas y personas.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Análisis</div>
+                    <div class="definition">Proceso de entender un problema para saber qué necesita el usuario antes de programar.</div>
+                </div>
+            </section>
+
+            <section id="B" class="glossary-section" aria-labelledby="heading-B">
+                <h2 id="heading-B">B</h2>
+                <div class="term-container">
+                    <div class="term">Base de datos</div>
+                    <div class="definition">Lugar digital donde se guarda información organizada.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Backend</div>
+                    <div class="definition">Lo que no se ve de una web: lo que maneja la lógica, los datos y las reglas detrás del sitio.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Bug</div>
+                    <div class="definition">Un error en el código que hace que el programa no funcione.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Biblioteca</div>
+                    <div class="definition">Conjunto de funciones ya hechas que puedes usar para no empezar desde cero.</div>
+                </div>
+            </section>
+
+            <section id="C" class="glossary-section" aria-labelledby="heading-C">
+                <h2 id="heading-C">C</h2>
+                <div class="term-container">
+                    <div class="term">CSS</div>
+                    <div class="definition">Lenguaje que usamos para darle estilo a una página web: colores, tamaños, posiciones, etc.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Clase</div>
+                    <div class="definition">Un molde para crear objetos en programación orientada a objetos.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Código</div>
+                    <div class="definition">Las instrucciones que escribimos para que una computadora haga algo.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Cliente</div>
+                    <div class="definition">La parte de una aplicación que ve y usa el usuario.</div>
+                </div>
+            </section>
+
+            <section id="D" class="glossary-section" aria-labelledby="heading-D">
+                <h2 id="heading-D">D</h2>
+                <div class="term-container">
+                    <div class="term">Debugging</div>
+                    <div class="definition">Buscar y arreglar errores en un programa para que funcione bien.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">DOM</div>
+                    <div class="definition">Representación en forma de árbol de una página web que los lenguajes pueden manipular.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Despliegue</div>
+                    <div class="definition">Proceso de subir una aplicación terminada a internet para que otros la usen.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Datos</div>
+                    <div class="definition">Información que una aplicación usa, guarda o muestra, como nombres, números o mensajes.</div>
+                </div>
+            </section>
+
+            <section id="E" class="glossary-section" aria-labelledby="heading-E">
+                <h2 id="heading-E">E</h2>
+                <div class="term-container">
+                    <div class="term">Encapsulamiento</div>
+                    <div class="definition">Técnica para proteger los datos internos de un objeto y solo permitir acceso controlado.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Etiqueta</div>
+                    <div class="definition">Elemento de HTML usado para estructurar el contenido de una página web.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Estructura de datos</div>
+                    <div class="definition">Forma en que se organizan y guardan los datos en programación.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Evento</div>
+                    <div class="definition">Algo que sucede en la página, como un clic, y que puede generar una acción programada.</div>
+                </div>
+            </section>
+
+            <section id="F" class="glossary-section" aria-labelledby="heading-F">
+                <h2 id="heading-F">F</h2>
+                <div class="term-container">
+                    <div class="term">Frontend</div>
+                    <div class="definition">Lo que el usuario ve en un sitio web, como colores, botones y textos.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Framework</div>
+                    <div class="definition">Herramienta que da estructura al desarrollo de aplicaciones, con funciones listas para usar.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Formulario</div>
+                    <div class="definition">Sección de una web donde los usuarios pueden escribir información para enviarla.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Función</div>
+                    <div class="definition">Código que hace algo específico y se puede usar muchas veces.</div>
+                </div>
+            </section>
+
+            <section id="G" class="glossary-section" aria-labelledby="heading-G">
+                <h2 id="heading-G">G</h2>
+                <div class="term-container">
+                    <div class="term">Git</div>
+                    <div class="definition">Herramienta que permite llevar el control de los cambios en los archivos de un proyecto.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">GitHub</div>
+                    <div class="definition">Plataforma en línea para guardar proyectos y trabajar en equipo con Git.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Grupo de desarrollo</div>
+                    <div class="definition">Equipo de personas que trabajan juntas para crear software.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Gestor de versiones</div>
+                    <div class="definition">Software que ayuda a manejar los cambios que se hacen en el código fuente de un proyecto.</div>
+                </div>
+            </section>
+
+            <section id="H" class="glossary-section" aria-labelledby="heading-H">
+                <h2 id="heading-H">H</h2>
+                <div class="term-container">
+                    <div class="term">HTML</div>
+                    <div class="definition">Lenguaje con el que se crea la estructura de una página web.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">HTTP</div>
+                    <div class="definition">Protocolo que permite que la web funcione y que podamos navegar entre páginas.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Hosting</div>
+                    <div class="definition">Servicio que guarda tu sitio web en internet para que otros lo puedan visitar.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Herencia</div>
+                    <div class="definition">En POO, es cuando una clase toma propiedades y métodos de otra para reutilizarlos.</div>
+                </div>
+            </section>
+
+            <section id="I" class="glossary-section" aria-labelledby="heading-I">
+                <h2 id="heading-I">I</h2>
+                <div class="term-container">
+                    <div class="term">IDE</div>
+                    <div class="definition">Programa todo-en-uno donde puedes escribir, probar y corregir código.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Iteración</div>
+                    <div class="definition">Repetición de una acción en programación, como recorrer una lista con un bucle.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Interfaz</div>
+                    <div class="definition">Lo que el usuario ve y usa en una aplicación: botones, menús, pantallas.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Importación</div>
+                    <div class="definition">Traer funciones o datos de otro archivo o librería para usarlos en tu código.</div>
+                </div>
+            </section>
+
+            <section id="J" class="glossary-section" aria-labelledby="heading-J">
+                <h2 id="heading-J">J</h2>
+                <div class="term-container">
+                    <div class="term">JavaScript</div>
+                    <div class="definition">Lenguaje que permite que las páginas web sean dinámicas e interactivas.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">JSON</div>
+                    <div class="definition">Formato sencillo para enviar datos entre aplicaciones, muy usado con JavaScript.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">JQuery</div>
+                    <div class="definition">Biblioteca de JavaScript que simplifica tareas comunes como animaciones y eventos.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Java</div>
+                    <div class="definition">Lenguaje de programación muy usado en aplicaciones empresariales y móviles.</div>
+                </div>
+            </section>
+
+            <section id="K" class="glossary-section" aria-labelledby="heading-K">
+                <h2 id="heading-K">K</h2>
+                <div class="term-container">
+                    <div class="term">Kernel</div>
+                    <div class="definition">Parte esencial de un sistema operativo que conecta el software con el hardware.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Kotlin</div>
+                    <div class="definition">Lenguaje moderno que se usa para desarrollar apps Android, más sencillo que Java.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Keylogger</div>
+                    <div class="definition">Programa que guarda lo que se escribe en el teclado, usado muchas veces con fines malos.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Keyword</div>
+                    <div class="definition">Palabra clave que tiene un significado especial dentro de un lenguaje de programación.</div>
+                </div>
+            </section>
+
+            <section id="L" class="glossary-section" aria-labelledby="heading-L">
+                <h2 id="heading-L">L</h2>
+                <div class="term-container">
+                    <div class="term">Lenguaje de programación</div>
+                    <div class="definition">Conjunto de instrucciones que usamos para decirle a la computadora qué hacer.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Lógica</div>
+                    <div class="definition">Parte del código que decide qué debe pasar según ciertas condiciones.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Librería</div>
+                    <div class="definition">Colección de funciones útiles que puedes agregar a tu programa para facilitar tareas.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Loop</div>
+                    <div class="definition">Repetición automática de una acción mientras se cumpla una condición.</div>
+                </div>
+            </section>
+
+            <section id="M" class="glossary-section" aria-labelledby="heading-M">
+                <h2 id="heading-M">M</h2>
+                <div class="term-container">
+                    <div class="term">Modelo</div>
+                    <div class="definition">Representación de los datos y la lógica de una aplicación.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Método</div>
+                    <div class="definition">Función que pertenece a una clase u objeto en programación orientada a objetos.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">MVC</div>
+                    <div class="definition">Patrón de diseño que separa la lógica, los datos y la interfaz de usuario.</div>
+                </div>
+                <div class="term-container">
+                    <div class="term">Microservicio</div>
+                    <div class="definition">Pequeña parte de una aplicación que funciona de manera independiente pero se comunica con el resto.</div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Paginación mejorada -->
+        <div class="pagination">
+            <a href="#" id="next-page" aria-label="Ir a la página de términos N-Z">Ir a N-Z</a>
+        </div>
     </div>
-    <div class="termino">
-        <div class="palabra">Backend</div>
-        <div class="definicion">Lo que no se ve de una web: maneja la lógica, los datos y las reglas detrás del sitio.</div>
-    </div>
-    <div class="termino">
-        <div class="palabra">Bug</div>
-        <div class="definicion">Error en el código que hace que el programa no funcione correctamente.</div>
-    </div>
-    <div class="termino">
-        <div class="palabra">Biblioteca</div>
-        <div class="definicion">Conjunto de funciones ya creadas que puedes usar para no empezar desde cero.</div>
-    </div>
-</div>
+    
+    <!-- Botón para volver arriba -->
+    <button class="back-to-top" id="back-to-top" aria-label="Volver arriba">↑</button>
+    
+    <!-- JavaScript mejorado -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variables globales
+            const glossarySections = document.querySelectorAll('.glossary-section');
+            const alphabetLinks = document.querySelectorAll('.alphabet-nav a');
+            const searchInput = document.getElementById('search-input');
+            const searchButton = document.getElementById('search-button');
+            const noResultsMessage = document.getElementById('no-results');
+            const backToTopButton = document.getElementById('back-to-top');
+            const nextPageButton = document.getElementById('next-page');
+            let activeSection = null;
+            let allTerms = [];
+            
+            // Recopilar todos los términos para búsqueda
+            glossarySections.forEach(section => {
+                const terms = section.querySelectorAll('.term-container');
+                terms.forEach(term => {
+                    const termText = term.querySelector('.term').textContent.toLowerCase();
+                    const defText = term.querySelector('.definition').textContent.toLowerCase();
+                    allTerms.push({
+                        element: term,
+                        section: section,
+                        term: termText,
+                        definition: defText
+                    });
+                });
+            });
+            
+            // Función para mostrar una sección
+            function showSection(letter) {
+                // Ocultar todas las secciones y quitar clases activas
+                glossarySections.forEach(section => {
+                    section.classList.remove('visible');
+                });
+                
+                alphabetLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Mostrar la sección seleccionada
+                const selectedSection = document.getElementById(letter);
+                if (selectedSection) {
+                    selectedSection.classList.add('visible');
+                    activeSection = selectedSection;
+                    
+                    // Marcar enlace activo
+                    document.querySelector(`[data-letter="${letter}"]`).classList.add('active');
+                    
+                    // Guardar la sección activa en localStorage
+                    localStorage.setItem('activeLetter', letter);
+                    
+                    // Ocultar mensaje de sin resultados
+                    noResultsMessage.style.display = 'none';
+                }
+            }
+            
+            // Inicializar con la primera letra o la última activa
+            const savedLetter = localStorage.getItem('activeLetter') || 'A';
+            showSection(savedLetter);
+            
+            // Controlador de eventos para la navegación alfabética
+            alphabetLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const letter = this.getAttribute('data-letter');
+                    showSection(letter);
+                    
+                    // Hacer scroll suave a la sección
+                    const sectionHeading = document.getElementById(`heading-${letter}`);
+                    if (sectionHeading) {
+                        sectionHeading.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+            
+            // Función de búsqueda
+            function searchTerms() {
+                const searchText = searchInput.value.toLowerCase().trim();
+            }
+                
+                if (searchText === '') {
+                    // Si la búsqueda está vacía, mostrar la sección actual
+                    if (activeSection) {
+                        showSection(activeSection.id);
+                    } else {
+                        showSection('A');
+                    }
+                    return;
+                }
+                
+                // Ocultar todas las secciones y términos
+                glossarySections.forEach(section => {
+                    section.classList.remove('visible');
+                    const terms = section.querySelectorAll('.term-container');
+                    terms.forEach(term => {
+                        term.style.display = 'none';
+                    });
+                });
+                
+                // Filtrar términos que coincidan
+                let matchFound = false;
+                let firstMatchSection = null;
+                
+                allTerms.forEach(item => {
+                    const matches = item.term.includes(searchText) || item.definition.includes(searchText);
+                    if (matches) {
+                        matchFound = true;
+                        item.element.style.display = 'block';
+                        
+                        // Mostrar la sección del primer término encontrado
+                        if (!firstMatchSection) {
+                            firstMatchSection = item.section;
+                            firstMatchSection.classList.add('visible');
+                        }
+                    }
+                });
