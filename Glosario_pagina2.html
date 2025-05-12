@@ -117,12 +117,8 @@
     </style>
 </head>
 <body>
-    <!-- Título  -->
-    <h1>Glosario Técnico ADSO (N-Z)</h1>
-    
-    <!-- Barra de navegación con letras -->
+    <h1>Glosario Tecnologia de ADSO (N-Z)</h1>
     <div class="letras">
-        <!-- Solo mostramos letras N-Z en esta página -->
         <a href="#" onclick="mostrarSeccion('N')">N</a>
         <a href="#" onclick="mostrarSeccion('O')">O</a>
         <a href="#" onclick="mostrarSeccion('P')">P</a>
@@ -451,12 +447,10 @@
     
     
     
-    <!-- Navegación a la primera página -->
-    <div class="paginacion">
-        <a href="pagina_1.html">Ir a A-M</a>
-    </div>
     
-    <!-- ver las secciones -->
+    <div class="paginacion">
+        <a href="Glosario_pagina1.html">Ir a A-M</a>
+    </div>
     <script>
         // mostrar lo que seleccionamos
         function mostrarSeccion(letra) {
@@ -465,7 +459,6 @@
             for (var i = 0; i < secciones.length; i++) {
                 secciones[i].style.display = 'none';
             }
-            
             // despues muestra solo la sección seleccionada
             document.getElementById(letra).style.display = 'block';
         }
