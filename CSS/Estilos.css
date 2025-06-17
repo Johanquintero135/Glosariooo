@@ -24,7 +24,6 @@
 
         .letras {
             text-align: center;
-            margin: 30px 0;
             background-color: #e2e2e2;
             padding: 15px;
             border-radius: 8px;
@@ -66,7 +65,6 @@
         .palabra {
             font-weight: bold;
             color: #4CAF50;
-            
             margin-bottom: 5px;
         }
 
@@ -86,7 +84,7 @@
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition:  0.3s;
         }
 
         .paginacion a:hover {
@@ -95,6 +93,6 @@
 
         h3 {
             text-align: center;
-            margin: 30px 0 10px;
+            margin: 30px 0 20px;
             color: #2c3e50;
         }
